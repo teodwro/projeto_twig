@@ -1,10 +1,22 @@
-{# templates/_base.html #}
 {% extends '_base.html' %}
 
 {% block conteudo %}
-  Página de Compras<ul>
-    {% for compra in compras %}
-      <li>{{ compra.item }}</li>
-    {% endfor %}
-  </ul>
+  <h1>Página de Compras</h1>
+
+  <h3>Adicionar Item</h3>
+  <form action="compras_adc.php" method="post">
+    <input type="text" name="item" placeholder="Escreva seu item" />
+    <input type="submit" value="Adicionar" />
+  </form>
+
+  <h3>Minha lista de Compras</h3>
+    <ul>
+      {% for compra in compras %}
+        <li>
+          {{ compra.item }} 
+          <a href="compras_excluir.php?id={{ compra.id }}" type="hidden"><button >Excluir</button></a>
+           <a href="compras_editar.php?id={{ compra.id }}" type="hidden"><button >Editar</button></a>
+        </li>
+      {% endfor %}
+    </ul>
 {% endblock %}
