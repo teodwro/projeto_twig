@@ -3,7 +3,7 @@
 require('inc/banco.php');
 
 $item = $_POST['item'] ?? null;
-$item_id = $_POST['id'] ?? null ;
+$id = $_POST['id'] ?? null ;
 
 if ($item) {
     $query = $pdo->prepare('UPDATE compras SET item = :item WHERE id = :id');
