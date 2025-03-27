@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+
+{% block conteudo %}
+<div>
+    <form action="addCompromisso.php" method="post">
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" type="text" required>
+        <br>
+        <label for="data">Data</label>
+        <input type="date" name="data" id="data" required>
+        <br>
+        <button>Adicionar</button>
+    </form>
+</div>
+
+<div>
+    {% for compromisso in compromissos %}
+        <div>
+        {{ compromisso.titulo }} <br>
+        {{ compromisso.data }}
+        <a href="excluir_compromisso.php?id={{ compromisso.id }}"><button>Excluir</button></a>
+        <a href="editar_compromisso.php?id={{ compromisso.id }}"><button>Editar</button></a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
