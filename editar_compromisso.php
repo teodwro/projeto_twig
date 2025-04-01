@@ -22,14 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $titulo = $_POST['titulo'] ?? null;
     $data = $_POST['data'] ?? null;
 
-    if ($item) {
+    if ($id) {
         $query = $pdo->prepare('UPDATE compromissos SET titulo = :titulo, data = :newdata WHERE id = :id');
 
+        $query->bindValue(':id', $id);
         $query->bindValue(':titulo', $titulo);
         $query->bindValue(':newdata', $data);
 
         $query->execute();
     }
 
-    header('location:compras.php');
+    header('location:compromissos.php');
 }
