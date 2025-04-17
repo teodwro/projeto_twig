@@ -1,6 +1,14 @@
 <?php
 
 require_once('vendor/autoload.php');
+
+session_start();
+
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 date_default_timezone_set('America/Sao_Paulo');
 
 use Carbon\Carbon;

@@ -4,6 +4,14 @@ require_once('twig_carregar.php');
 require('inc/banco.php');
 use Carbon\Carbon;
 
+session_start();
+
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+
 $titulo = $_POST['titulo'] ?? null;
 $data = $_POST['data'] ?? null;
 

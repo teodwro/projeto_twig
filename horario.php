@@ -1,6 +1,14 @@
 <?php
 
 require('twig_carregar.php');
+
+session_start();
+
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 use Carbon\Carbon;
 
 date_default_timezone_set('America/Sao_Paulo');

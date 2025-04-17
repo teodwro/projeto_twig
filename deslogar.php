@@ -1,6 +1,7 @@
 <?php
 
 require_once('twig_carregar.php');
+require('inc/banco.php');   
 
 session_start();
 
@@ -9,6 +10,7 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 
-echo $twig->render('index.html', [
-    'fruta' => 'Abacaxi',
-]);
+
+session_destroy();
+
+echo $twig->render('login.html');

@@ -2,6 +2,14 @@
 
 require('inc/banco.php');
 
+session_start();
+
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+
 $item_id =  $_GET['id'] ?? null;
 
 if ($item_id) {
